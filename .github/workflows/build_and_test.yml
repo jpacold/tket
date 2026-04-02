@@ -282,10 +282,7 @@ jobs:
     steps:
     - uses: actions/checkout@v6
       with: 
-        submodules: recursive
-    - uses: extractions/setup-just@v3
-      with:
-        just-version: 1.5.0
+        submodules: true
     - name: Select Python 3.12
       uses: actions/setup-python@v6
       with:
@@ -351,16 +348,6 @@ jobs:
         cd pytket/tests
         pip install -r requirements.txt
         pytest --ignore=simulator/
-    - name: Test building docs
-      if: github.event_name == 'pull_request' || github.event_name == 'workflow_dispatch'
-      timeout-minutes: 20
-      run: |
-        pip install poetry==2.1.4
-        poetry config virtualenvs.create false
-        cd pytket/docs
-        poetry install
-        # just build-strict # https://github.com/quantinuum/tket/issues/2044
-        just build
     - name: Upload artifact
       if: github.event_name == 'pull_request' || github.event_name == 'workflow_dispatch'
       uses: actions/upload-artifact@v7

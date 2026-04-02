@@ -313,6 +313,12 @@ For more on pytket passes see the [compilation](https://docs.quantinuum.com/tket
 .. automethod:: pytket.passes.ZZPhaseToRz
 ```
 
+```{eval-rst}
+.. automodule:: pytket.passes.combinecondpass
+
+.. autofunction:: pytket.passes.combinecondpass.CombineCondPass
+```
+
 ## pytket.passes.resizeregpass
 
 ```{eval-rst}
